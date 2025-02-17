@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get image</title>
+    <style>
+            body {
+        margin: 0 15%;
+      }
+      ul {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        /* align-items: center; */
+        justify-content: center;
+        border-bottom: 2px solid #000;
+      }
+      ul li {
+        list-style: none;
+        text-decoration: none;
+        text-align: center;
+        display: inline;
+
+        padding: 30px;
+      }
+
+      ul li a {
+        text-decoration: none;
+        color: #000;
+      }
+
+      ul li a:hover {
+        background-color: #262626;
+        padding: 20px;
+        border-radius: 8px;
+        color: #fff;
+      }
+
+      form{
+        text-align: center;
+        
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="form.html">Form</Form></a>
+      </li>
+      <li>
+        <a href="getform.html">Form 2</Form></a>
+      </li>
+    </ul>
+    <h1 style="text-align: center;">Get Form</h1>
+    <form method="get" action="index.html">
+      <input type="text" name="username" placeholder="Enter Username" />
+      <br /><br />
+      <input type="password" name="password" placeholder="Enter Password" />
+      <br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

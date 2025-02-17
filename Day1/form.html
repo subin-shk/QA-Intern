@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+            body {
+        margin: 0 15%;
+      }
+      ul {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        /* align-items: center; */
+        justify-content: center;
+        border-bottom: 2px solid #000;
+      }
+      ul li {
+        list-style: none;
+        text-decoration: none;
+        text-align: center;
+        display: inline;
+
+        padding: 30px;
+      }
+
+      ul li a {
+        text-decoration: none;
+        color: #000;
+      }
+
+      ul li a:hover {
+        background-color: #262626;
+        padding: 20px;
+        border-radius: 8px;
+        color: #fff;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 40vw;
+        height: auto;
+        border: 1px solid #000;
+        border-radius: 8px;
+        padding: 20px;
+        margin-left: 20%;
+        
+      }
+
+      input {
+        width: 100%;
+        border: 1px solid #000;
+        border-radius: 8px;
+        height: 25px;
+      }
+
+      label {
+        margin-top: 15px;
+      }
+      button {
+        margin-top: 20px;
+      }
+
+      .error-msg {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+
+    <ul>
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="form.html">Form</Form></a>
+      </li>
+      <li>
+        <a href="getform.html">Form 2</Form></a>
+      </li>
+    </ul>
+<h1 style="text-align: center;">QA Form</h1>
+    <form
+      action=""
+      onsubmit="validateForm(event)"
+      onreset="resetErrors()"
+      method="post"
+      novalidate
+      data-form-type="Registration form"
+      id="regform"
+    >
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name"/>
+      <small id="name-msg" class="error-msg"></small>
+
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" />
+      <small id="username-msg" class="error-msg"></small>
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" />
+      <small id="email-msg" class="error-msg"></small>
+
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" />
+      <small id="password-msg" class="error-msg"></small>
+
+      <label for="phone">Phone no.</label>
+      <input type="text" name="phone" id="phone" />
+      <small id="phone-msg" class="error-msg"></small>
+
+      <label for="landline">Land Line</label>
+      <input type="text" name="landline" id="landline" />
+      <small id="landline-msg" class="error-msg"></small>
+
+      <button type="submit">Submit</button>
+
+
+      <div class="form-output">
+        <div class="name-attr"></div>
+      </div>
+    </form>
+
+    <br>
+    <button onclick="show();">Show data</button>
+  </body>
+
+  <script>
+    function validateForm(event) {
+      event.preventDefault();
+
+      let emailPatt =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      let phonePatt = /^(98\d{8})$/;
+      let landlinePatt = /^(01\d{7})$/;
+
+      let name = document.getElementById("name").value;
+      let username = document.getElementById("username").value;
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+      let phone = document.getElementById("phone").value;
+      let landline = document.getElementById("landline").value;
+
+      const nameMsg = document.getElementById("name-msg");
+      const usernameMsg = document.getElementById("username-msg");
+      const emailMsg = document.getElementById("email-msg");
+      const passwordMsg = document.getElementById("password-msg");
+      const phoneMsg = document.getElementById("phone-msg");
+      const landlineMsg = document.getElementById("landline-msg");
+
+      nameMsg.textContent = "";
+      usernameMsg.textContent = "";
+      emailMsg.textContent = "";
+      passwordMsg.textContent = "";
+      phoneMsg.textContent = "";
+      landlineMsg.textContent = "";
+      // if (name == "") {
+      //   alert("Cannot be empty");
+      //   return false;
+      // }
+
+      let isValid = true;
+
+      if (name === "") {
+        nameMsg.textContent = "Name is required";
+        isValid = false;
+      }
+      if (username === "") {
+        usernameMsg.textContent = "Username is required";
+        isValid = false;
+      }
+      if (email === "") {
+        emailMsg.textContent = "Email is required";
+        isValid = false;
+      }
+      if (!email.match(emailPatt)) {
+        emailMsg.textContent = "Please enter valid email";
+        isValid = false;
+      }
+      if (email === "") {
+        emailMsg.textContent = "Email is required";
+        isValid = false;
+      }
+      if (password === "") {
+        passwordMsg.textContent = "Password is required";
+        isValid = false;
+      }
+      if (password.length < 6) {
+        passwordMsg.textContent = "Password need to be more than 6 characters";
+        isValid = false;
+      }
+      if (phone === "") {
+        phoneMsg.textContent = "Phone is required";
+        isValid = false;
+      }
+      if (!phone.match(phonePatt)) {
+        phoneMsg.textContent = "Please enter valid phone no.";
+        isValid = false;
+      }
+      if (landline === "") {
+        landlineMsg.textContent = "Landline is required";
+        isValid = false;
+      }
+      if (!landline.match(landlinePatt)) {
+        landlineMsg.textContent = "Please enter valid landline no.";
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert("Form submitted successfully!");
+        return true;
+
+
+      } else {
+        return false;
+      }
+    }
+
+    function resetErrors() {
+      document.getElementById("name-msg").textContent = "";
+    }
+  </script>
+
+  <script>
+    let show=()=>{
+      let element=document.getElementById("regform");
+      alert("Form type = "+element.getAttribute('data-form-type'))
+    }
+  </script>
+</html>
