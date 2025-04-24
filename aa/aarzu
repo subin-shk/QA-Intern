@@ -1,0 +1,44 @@
+const { expect, browser } = require("@wdio/globals");
+const LoginPage = require("../pageobjects/login.page");
+const SecurePage = require("../pageobjects/secure.page");
+describe("My Login application", () => {
+  it("should login with valid credentials", async () => {
+    await browser.pause(5000);
+    const app = await $("~App");
+    await app.click();
+    const actionBar = await $("~Action Bar");
+    await actionBar.waitForDisplayed({ timeout: 5000 });
+    await actionBar.click();
+    const actionMechanics = await $("~Action Bar Mechanics");
+    await actionMechanics.click();
+    await browser.back();
+    const actionBarTabs = await $("~Action Bar Tabs");
+    await actionBarTabs.click();
+    const addNewTab = await $("~Add new tab");
+    await addNewTab.click();
+    await browser.back();
+    await browser.back();
+    await browser.back();
+  });
+  it("should click views", async () => {
+    await browser.pause(5000);
+    const app = await $("~Views");
+    app.click();
+
+    
+    const animation = await $("~Animation");
+    animation.click();
+    const Transition = await $("~3D Transition");
+    Transition.click();
+    const Lyon = await $("~Lyon");
+    Lyon.click();
+    await browser.back();
+    const Shake = await $("~Lyon");
+    Shake.click();
+    let enterPassword = await "#io.appium.android.apis:id/pw";
+    await enterPassword.sendKeys("steve");
+    const Login = await $("~Login");
+    Login.click();
+    await browser.back();
+  });
+});

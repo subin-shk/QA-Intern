@@ -7,6 +7,7 @@
     <style>
             body {
         margin: 0 15%;
+        
       }
       ul {
         width: 100%;
@@ -49,7 +50,7 @@
         border-radius: 8px;
         padding: 20px;
         margin-left: 20%;
-        
+        background-color: #cecece;
       }
 
       input {
@@ -68,6 +69,12 @@
 
       .error-msg {
         color: red;
+      }
+
+      button:hover{
+        background-color: #262626;
+        color: #fff;
+
       }
     </style>
   </head>
@@ -118,12 +125,10 @@
       <input type="text" name="landline" id="landline" />
       <small id="landline-msg" class="error-msg"></small>
 
-      <button type="submit">Submit</button>
+      <button type="submit" style="padding: 10px; border:1px solid #000; border-radius: 8px;">Submit</button>
 
 
-      <div class="form-output">
-        <div class="name-attr"></div>
-      </div>
+
     </form>
 
     <br>
@@ -213,6 +218,8 @@
       }
 
       if (isValid) {
+       
+
         alert("Form submitted successfully!");
         return true;
 
